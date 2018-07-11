@@ -60,8 +60,45 @@ client.on("message", msg => {
         msg.channel.send(mem.displayName + " has successfully been unmuted!");
       }).catch(e => {
         msg.channel.send("An error occured!");
+        console.log(e)
+ 
+    }
+  }
+      });
+   if (msg.content.toLowerCase().startsWith(prefix + "unmod")) {
+    var mem = msg.mentions.members.first();
+    if (msg.guild.roles.find("name", "Muted")) {
+      mem.removeRole(msg.guild.roles.find("name", "Mod")).then(() => {
+        msg.channel.send(mem.displayName + " has successfully demoted!");
+      }).catch(e => {
+        msg.channel.send("An error occured!");
         console.log(e);
       });
+   
+    }
+  }
+      });
+   if (msg.content.toLowerCase().startsWith(prefix + "unmod")) {
+    var mem = msg.mentions.members.first();
+    if (msg.guild.roles.find("name", "Mod")) {
+      mem.removeRole(msg.guild.roles.find("name", "Mod")).then(() => {
+        msg.channel.send(mem.displayName + " has successfully demoted!");
+      }).catch(e => {
+        msg.channel.send("An error occured!");
+        console.log(e);
+      });
+    }
+  }
+  if (msg.content.toLowerCase().startsWith(prefix + "mod")) {
+    var mem = msg.mentions.members.first();
+    if (msg.guild.roles.find("name", "Member")) {
+      mem.addRole(msg.guild.roles.find("name", "Mod")).then(() => {
+        msg.channel.send(mem.displayName + " has successfully been promoted!");
+      }).catch(e => {
+        msg.channel.send("An error occured!");
+        console.log(e);
+      });
+
 
     }
   }
